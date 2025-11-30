@@ -26,18 +26,55 @@ const galleryData = [
 ];
 
 const galleryGrid = document.getElementById('gallery-grid');
+const detailContainer = document.getElementById('nft-detail-container');
 
 function renderGallery() {
-    galleryGrid.innerHTML = galleryData.map(item => `
+    if (!galleryGrid) return;
+
+    galleryGrid.innerHTML = galleryData.map((item, index) => `
         <div class="nft-card">
             <img src="${item.image}" alt="${item.title}" class="nft-image" loading="lazy">
             <div class="nft-info">
                 <h3>${item.title}</h3>
                 <p>${item.description}</p>
-                <a href="${item.link}" target="_blank" class="nft-link">View NFT →</a>
+                <a href="nft-detail.html?id=${index}" class="nft-link">View Details →</a>
             </div>
         </div>
     `).join('');
 }
 
-document.addEventListener('DOMContentLoaded', renderGallery);
+function renderDetail() {
+    if (!detailContainer) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    if (id !== null && galleryData[id]) {
+        const item = galleryData[id];
+        detailContainer.innerHTML = `
+            <div class="detail-image-container">
+                <img src="${item.image}" alt="${item.title}" class="detail-image">
+            </div>
+            <div class="detail-info">
+                <h1>${item.title}</h1>
+                <p class="detail-description">${item.description}</p>
+                
+                <div class="detail-meta">
+                    <p>Artist: <span>Behnaz</span></p>
+                    <p>Collection: <span>AuraLines</span></p>
+                </div>
+
+                <a href="${item.link}" target="_blank" class="btn">Buy on xrp.cafe</a>
+                <br><br>
+                <a href="index.html" class="nft-link">← Back to Gallery</a>
+            </div>
+        `;
+    } else {
+        detailContainer.innerHTML = '<p>NFT not found.</p><a href="index.html" class="btn">Back to Home</a>';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderGallery();
+    renderDetail();
+});

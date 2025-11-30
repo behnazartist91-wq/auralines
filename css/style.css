@@ -291,6 +291,69 @@ nav {
     color: var(--secondary-color);
 }
 
+/* NFT Detail Page */
+.nft-detail-section {
+    padding-top: 150px;
+    /* Space for fixed header */
+    min-height: 80vh;
+}
+
+.nft-detail-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-image-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.detail-image {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    border: 1px solid var(--glass-border);
+}
+
+.detail-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.detail-info h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.detail-description {
+    font-size: 1.2rem;
+    color: #d0d0d0;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.detail-meta {
+    margin-bottom: 2rem;
+    padding: 20px;
+    background: var(--glass-bg);
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+}
+
+.detail-meta p {
+    margin-bottom: 0.5rem;
+    color: #a0a0a0;
+}
+
+.detail-meta span {
+    color: white;
+    font-weight: 600;
+}
+
 /* Footer */
 footer {
     background: #050505;
